@@ -58,7 +58,8 @@ resource "aws_security_group" "allow_ssh" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = [aws_vpc.vpc_1.cidr_block]
+    cidr_blocks      = ["0.0.0.0/0"]    
+    # cidr_blocks      = [aws_vpc.vpc_1.cidr_block]
     # ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
   }
 

@@ -18,7 +18,8 @@ resource "aws_instance" "first_instance" {
   instance_type = "t2.micro"
   associate_public_ip_address  = true
   subnet_id = aws_subnet.public_subnet.id
-  #vpc_security_group_ids = 
+  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+  # security_groups = aws_security_group.allow_ssh.id
   key_name = "key"
   tags = {
     Name = "first_instance"
