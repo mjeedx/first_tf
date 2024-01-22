@@ -1,0 +1,29 @@
+---
+# - name: Setup NTP for all hosts
+#   hosts: all
+#   become: yes
+#   tasks:
+#     - name: Ensure NTP is installed.
+#       apt: name=ntp state=present
+
+#     - name: Ensure NTP is installed
+#       service: name=ntpd state=started enabled=yes
+
+#     # - command: apt install -y curl # Will trying to install everytime
+
+#     # - shell: |
+#     #     if ! apt -qq list | grep -wq package_name; then
+#     #       apt install -y 
+#     #     fi
+
+- name: Install Apache.
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install Apache
+      apt:
+        name:
+          - nginx
+        state: present
+    
