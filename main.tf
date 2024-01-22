@@ -9,13 +9,13 @@ terraform {
 }
 
 provider "aws" {
-  region  = "eu-central-1"
+  region  = "us-east-1"
 }
 
 
 resource "aws_instance" "first_instance" {
-  ami           = "ami-070b208e993b59cea"
-  instance_type = "t2.micro"
+  ami           = "ami-02cd6549baea35b55"
+  instance_type = "t4g.nano"
   associate_public_ip_address  = true
   subnet_id = aws_subnet.public_subnet.id
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
@@ -23,7 +23,11 @@ resource "aws_instance" "first_instance" {
   key_name = "key"
   tags = {
     Name = "first_instance"
-  }
+  } 
+  user_data = <<EOF
+  sudo echo "test-test-test" > /tmp/file.txt
+  cat /tmp/file.txt
+EOF
 }
 
 output "first_instance" {

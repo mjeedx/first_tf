@@ -13,7 +13,7 @@ resource "aws_vpc" "vpc_1" {
 resource "aws_subnet" "public_subnet" {
   vpc_id            = aws_vpc.vpc_1.id
   cidr_block        = "10.10.1.0/24"
-  availability_zone = "eu-central-1a"
+  availability_zone = "us-east-1a"
   map_public_ip_on_launch = true
 
   tags = {
